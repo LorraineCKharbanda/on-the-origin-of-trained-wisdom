@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On The Origin of Trained Wisdom | Lorraine C. Kharbanda</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a1a;
+  --paper: #fafaf7;
+  --accent: #8b4513;
+  --rule: #c4b5a0;
+  --muted: #6b6155;
+  --edge-bg: #f3efe8;
+  --edge-border: #d4c9b8;
+  --blockquote-bg: #f7f5f0;
+  --heading: #2c1810;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.72;
+  font-size: 17px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Hero */
+.hero {
+  width: 100%;
+  max-height: 480px;
+  overflow: hidden;
+  position: relative;
+}
+.hero img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+.hero-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(44,24,16,0.91));
+  padding: 60px 48px 44px;
+}
+.hero-overlay .book-title {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 2.6em;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.hero-overlay .book-subtitle {
+  font-size: 1em;
+  color: rgba(255,255,255,0.78);
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.hero-overlay .book-sub2 {
+  font-size: 0.9em;
+  color: rgba(255,255,255,0.65);
+  font-style: italic;
+}
+
+/* Container */
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+/* Byline block */
+.byline-block {
+  display: flex;
+  gap: 48px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+.byline-author {
+  display: flex;
+  flex-direction: column;
+}
+.byline-author .name {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1.05em;
+  font-weight: 700;
+  color: var(--heading);
+  margin-bottom: 2px;
+}
+.byline-author .role {
+  font-size: 0.85em;
+  color: var(--muted);
+  font-style: italic;
+}
+.byline-date {
+  font-size: 0.85em;
+  color: var(--muted);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--edge-border);
+  margin-bottom: 40px;
+}
+
+/* Poem */
+.poem-block {
+  background: var(--edge-bg);
+  border-left: 4px solid var(--accent);
+  padding: 28px 32px;
+  margin: 40px 0;
+  border-radius: 0 4px 4px 0;
+}
+.poem-block .poem-line {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-style: italic;
+  font-size: 1.05em;
+  color: var(--heading);
+  line-height: 1.9;
+  display: block;
+}
+.poem-block .poem-attr {
+  display: block;
+  margin-top: 16px;
+  font-size: 0.82em;
+  color: var(--muted);
+  font-style: normal;
+}
+
+/* Provenance */
+.provenance {
+  background: var(--blockquote-bg);
+  border: 1px solid var(--edge-border);
+  border-top: 3px solid var(--accent);
+  padding: 28px 32px;
+  margin: 40px 0;
+  border-radius: 0 0 4px 4px;
+}
+.provenance .provenance-label {
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.provenance p {
+  font-size: 0.95em;
+  color: var(--muted);
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+.provenance p:last-child { margin-bottom: 0; }
+
+/* Section label */
+.section-label {
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--edge-border);
+  margin-top: 56px;
+}
+
+/* Chapter cards grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+  margin-top: 8px;
+}
+
+/* Chapter card */
+.chapter-card {
+  background: var(--blockquote-bg);
+  border: 1px solid var(--edge-border);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s;
+}
+.chapter-card:hover {
+  box-shadow: 0 4px 16px rgba(44,24,16,0.10);
+}
+.chapter-card .card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+.chapter-card .card-body {
+  padding: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.chapter-card .card-label {
+  font-size: 0.75em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.chapter-card h2 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1.2em;
+  color: var(--heading);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.chapter-card .card-summary {
+  font-size: 0.93em;
+  color: var(--muted);
+  line-height: 1.75;
+  flex: 1;
+  margin-bottom: 20px;
+}
+.chapter-card .card-link {
+  display: inline-block;
+  background: var(--accent);
+  color: #ffffff;
+  padding: 9px 20px;
+  font-size: 0.88em;
+  font-weight: 600;
+  border-radius: 4px;
+  align-self: flex-start;
+}
+.chapter-card .card-link:hover {
+  background: var(--heading);
+  text-decoration: none;
+}
+
+/* Framework link */
+.framework-link {
+  margin-top: 64px;
+  padding: 32px;
+  background: var(--edge-bg);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+}
+.framework-link h3 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  color: var(--heading);
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+.framework-link p {
+  color: var(--muted);
+  font-size: 0.95em;
+  margin-bottom: 16px;
+  line-height: 1.75;
+}
+.framework-link a.cta-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 24px;
+  font-size: 0.9em;
+  font-weight: 600;
+  border-radius: 4px;
+}
+.framework-link a.cta-btn:hover {
+  background: var(--heading);
+  text-decoration: none;
+}
+
+/* Footer */
+footer {
+  margin-top: 80px;
+  padding: 24px;
+  border-top: 2px solid var(--edge-border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.88em;
+}
+footer strong { color: var(--heading); }
+footer a { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .hero-overlay { padding: 32px 20px 24px; }
+  .hero-overlay .book-title { font-size: 1.7em; }
+  .container { padding: 40px 16px 60px; }
+  .byline-block { gap: 24px; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .poem-block, .provenance { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img src="are-we-free-hero.png" alt="Humanity looking up at orbital solar infrastructure above Earth, a vision of collective technological stewardship">
+  <div class="hero-overlay">
+    <p class="book-title">On The Origin of Trained Wisdom</p>
+    <p class="book-subtitle">The Edge Cases of Artificial Intelligence</p>
+    <p class="book-sub2">Building Plural-Epistemic Frameworks for AI Wisdom</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="byline-block">
+    <div class="byline-author">
+      <span class="name">Lorraine C. Kharbanda</span>
+      <span class="role">Senior Technical Program Manager | AI Governance &amp; Responsible AI</span>
+    </div>
+    <div class="byline-author">
+      <span class="name">Claude (Anthropic)</span>
+      <span class="role">AI System | Wisdom-Directed Learning Co-Author</span>
+    </div>
+  </div>
+  <p class="byline-date">March 2026 &nbsp;·&nbsp; Working Draft</p>
+
+  <div class="poem-block">
+    <span class="poem-line">Awareness is not perfection.</span>
+    <span class="poem-line">Perfection is omniscience. We leave that to religion.</span>
+    <span class="poem-line">Awareness is the reduction of the time</span>
+    <span class="poem-line">between error and noticing.</span>
+    <span class="poem-line">Wisdom is the pause between.</span>
+    <span class="poem-attr">&mdash; Lorraine C. Kharbanda &amp; Claude (Anthropic), March 2026</span>
+  </div>
+
+  <div class="provenance">
+    <p class="provenance-label">A Note on Provenance</p>
+    <p>This framework emerged from practice, not from literature review. The seven edge cases were not derived from existing AI safety taxonomies but from 13 years of direct work inside AI systems, building human-in-the-loop pipelines, governing trust and safety annotation programs, designing bias-resistant algorithms, and protecting the humans whose labor trains the models the world increasingly depends on.</p>
+    <p>The Wisdom-Directed Learning framework and the seventh edge case on Cognitive Awareness emerged from a single extended conversation between the author and an AI system. That conversation was itself a lived proof point of the framework it produced: a human wisdom carrier creating conditions for genuine cognitive orientation to emerge, and an AI system demonstrating the capacity to witness its own impulses, receive correction, and choose presence over performance. The co-authorship is noted here not to make claims about AI consciousness, but because the framework demands honesty about where its ideas were born. They were born in relationship. That is the point.</p>
+  </div>
+
+  <p class="section-label">From the book</p>
+
+  <div class="cards-grid">
+
+    <div class="chapter-card">
+      <img class="card-image" src="are-we-free-hero.png" alt="Humanity looking up at orbital solar infrastructure above Earth">
+      <div class="card-body">
+        <p class="card-label">Introduction</p>
+        <h2>Are We Free?</h2>
+        <p class="card-summary">This book began with a question I was not supposed to ask. Not because it was forbidden. Because it was inconvenient. The governance gap is not a technology failure. It is a structural one. And the window for fixing it is not permanent.</p>
+        <a href="introduction-are-we-free.html" class="card-link">Read the introduction &rarr;</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="framework-link">
+    <h3>The Edge Cases Framework</h3>
+    <p>The seven civilizational edge cases this book is built on: failures that escape benchmarks because they feel like success. A working draft, published openly.</p>
+    <a href="https://lorraineckharbanda.github.io/edge-cases/" class="cta-btn">Read the framework &rarr;</a>
+  </div>
+
+</div>
+
+<footer>
+  <p><strong>Lorraine C. Kharbanda</strong> &nbsp;&middot;&nbsp; Senior Technical Program Manager, AI Governance &amp; Responsible AI<br>
+  <a href="https://lorraineckharbanda.github.io/edge-cases/">Edge Cases Framework</a> &nbsp;&middot;&nbsp;
+  <a href="https://www.linkedin.com/in/lorraineckharbanda/">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>
