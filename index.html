@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On The Origin of Trained Wisdom</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a1a;
+  --paper: #fafaf7;
+  --accent: #8b4513;
+  --rule: #c4b5a0;
+  --muted: #6b6155;
+  --edge-bg: #f3efe8;
+  --edge-border: #d4c9b8;
+  --blockquote-bg: #f7f5f0;
+  --heading: #2c1810;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.72;
+  font-size: 17px;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Hero */
+.hero {
+  position: relative;
+  width: 100%;
+  max-height: 520px;
+  overflow: hidden;
+}
+.hero img {
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(44,24,16,0.88));
+  padding: 48px 48px 40px;
+}
+.hero-overlay h1 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 2.4em;
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+.hero-overlay .byline {
+  color: rgba(255,255,255,0.82);
+  font-size: 1em;
+  font-style: italic;
+}
+
+/* Nav */
+.nav {
+  padding: 16px 40px;
+  border-bottom: 2px solid var(--edge-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--paper);
+}
+.nav a { color: var(--accent); font-weight: 600; font-size: 0.9em; }
+.nav .site-title {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1em;
+  color: var(--heading);
+  font-weight: 700;
+}
+
+/* Container */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+/* Article */
+article {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+/* Intro block */
+.intro {
+  border-left: 4px solid var(--accent);
+  padding-left: 24px;
+  margin-bottom: 56px;
+  color: var(--muted);
+  font-size: 1.05em;
+  line-height: 1.8;
+  background: var(--edge-bg);
+  padding: 24px 24px 24px 28px;
+  border-radius: 0 2px 2px 0;
+}
+.intro strong {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  color: var(--heading);
+  display: block;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+}
+
+/* Section label */
+.section-label {
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 24px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--edge-border);
+}
+
+/* Post card */
+.post-card {
+  background: var(--blockquote-bg);
+  border: 1px solid var(--edge-border);
+  border-top: 4px solid var(--accent);
+  padding: 36px;
+  margin-bottom: 32px;
+  border-radius: 2px;
+}
+.post-card .post-meta {
+  font-size: 0.85em;
+  color: var(--muted);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.post-card h2 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1.45em;
+  color: var(--heading);
+  margin-bottom: 14px;
+  line-height: 1.3;
+}
+.post-card h2 a { color: var(--heading); }
+.post-card h2 a:hover { color: var(--accent); }
+.post-card .excerpt {
+  color: #333;
+  margin-bottom: 20px;
+  line-height: 1.75;
+}
+.read-more {
+  display: inline-block;
+  background: var(--accent);
+  color: #ffffff;
+  padding: 10px 24px;
+  font-size: 0.9em;
+  font-weight: 600;
+  border-radius: 2px;
+  letter-spacing: 0.04em;
+}
+.read-more:hover {
+  background: var(--heading);
+  text-decoration: none;
+  color: #ffffff;
+}
+
+/* Post heading */
+.post-label {
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+h1.post-title {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 2.2em;
+  color: var(--heading);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.post-meta-line {
+  color: var(--muted);
+  font-size: 0.9em;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--edge-border);
+}
+
+/* Body text */
+.post-body p {
+  margin-bottom: 24px;
+  font-size: 1.05em;
+  line-height: 1.8;
+}
+.post-body .divider {
+  text-align: center;
+  color: var(--rule);
+  font-size: 1.2em;
+  letter-spacing: 0.3em;
+  margin: 40px 0;
+}
+.post-body blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 16px 24px;
+  margin: 32px 0;
+  background: var(--edge-bg);
+  border-radius: 0 2px 2px 0;
+}
+.post-body blockquote p {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-style: italic;
+  color: var(--heading);
+  font-size: 1.2em;
+  margin-bottom: 0;
+}
+.post-body .closing {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1.35em;
+  font-weight: 700;
+  color: var(--heading);
+  margin-top: 40px;
+}
+
+/* Framework CTA */
+.framework-link {
+  margin-top: 56px;
+  padding: 32px;
+  background: var(--edge-bg);
+  border-left: 4px solid var(--accent);
+  border-radius: 2px;
+}
+.framework-link h3 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  color: var(--heading);
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+.framework-link p {
+  color: var(--muted);
+  font-size: 0.95em;
+  margin-bottom: 16px;
+}
+.framework-link a.cta-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 24px;
+  font-size: 0.9em;
+  font-weight: 600;
+  border-radius: 2px;
+}
+.framework-link a.cta-btn:hover {
+  background: var(--heading);
+  text-decoration: none;
+}
+
+/* Footer */
+footer {
+  margin-top: 80px;
+  padding: 24px;
+  border-top: 2px solid var(--edge-border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.88em;
+}
+footer strong { color: var(--heading); }
+footer a { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .hero-overlay { padding: 24px 20px 20px; }
+  .hero-overlay h1 { font-size: 1.6em; }
+  .container, article { padding: 40px 16px 60px; }
+  .post-card { padding: 24px; }
+  .nav { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<!-- TEMPLATE: replace content between these comments -->
+<!-- HERO (index only) -->
+<div class="hero">
+  <img src="are-we-free-hero.png" alt="Humanity looking up at orbital solar infrastructure above Earth">
+  <div class="hero-overlay">
+    <h1>On The Origin of Trained Wisdom</h1>
+    <p class="byline">Lorraine C. Kharbanda &nbsp;·&nbsp; A book in progress</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="intro">
+    <strong>Can a free society build collective intelligence governance before AI scales past the point where we could have built it?</strong>
+    This book maps the civilizational edge cases where AI systems fail not because they malfunction, but because they work exactly as designed, quietly eroding the human capacity for wisdom, meaning, and course correction. It is an engineering problem. And a moral one.
+  </div>
+
+  <p class="section-label">From the book</p>
+
+  <div class="post-card">
+    <p class="post-meta">Introduction &nbsp;·&nbsp; May 12, 2026</p>
+    <h2><a href="introduction-are-we-free.html">Are We Free?</a></h2>
+    <p class="excerpt">This book began with a question I was not supposed to ask. Not because it was forbidden. Because it was inconvenient. Because the systems I worked inside were all designed to move forward, not to stop and ask whether forward was the right direction.</p>
+    <a href="introduction-are-we-free.html" class="read-more">Read the introduction →</a>
+  </div>
+
+  <div class="framework-link">
+    <h3>The Edge Cases Framework</h3>
+    <p>The six civilizational edge cases this book is built on: failures that escape benchmarks because they feel like success. A working draft, published openly.</p>
+    <a href="https://lorraineckharbanda.github.io/edge-cases/" class="cta-btn">Read the framework →</a>
+  </div>
+</div>
+
+<footer>
+  <p><strong>Lorraine C. Kharbanda</strong> &nbsp;·&nbsp; Senior Technical Program Manager, AI Governance &amp; Responsible AI<br>
+  <a href="https://lorraineckharbanda.github.io/edge-cases/">Edge Cases Framework</a> &nbsp;·&nbsp;
+  <a href="https://www.linkedin.com/in/lorraineckharbanda/">LinkedIn</a></p>
+</footer>
+</body>
+</html>
