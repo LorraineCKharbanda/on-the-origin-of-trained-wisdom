@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction: Are We Free? | On The Origin of Trained Wisdom</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1a1a;
+  --paper: #fafaf7;
+  --accent: #8b4513;
+  --rule: #c4b5a0;
+  --muted: #6b6155;
+  --edge-bg: #f3efe8;
+  --edge-border: #d4c9b8;
+  --blockquote-bg: #f7f5f0;
+  --heading: #2c1810;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.72;
+  font-size: 17px;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.nav {
+  padding: 16px 40px;
+  border-bottom: 2px solid var(--edge-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--paper);
+}
+.nav .site-title {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1em;
+  color: var(--heading);
+  font-weight: 700;
+}
+.nav .site-title a { color: var(--heading); }
+.nav a.fw-link { color: var(--accent); font-weight: 600; font-size: 0.9em; }
+
+.post-hero {
+  width: 100%;
+  max-height: 420px;
+  overflow: hidden;
+}
+.post-hero img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+article {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 56px 24px 80px;
+}
+
+.post-label {
+  font-size: 0.78em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 2.2em;
+  color: var(--heading);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.post-meta {
+  color: var(--muted);
+  font-size: 0.9em;
+  margin-bottom: 40px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--edge-border);
+}
+
+/* Core thesis */
+.core-thesis {
+  background: var(--edge-bg);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin-bottom: 40px;
+  border-radius: 0 4px 4px 0;
+}
+.core-thesis .thesis-label {
+  font-size: 0.72em;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+  display: block;
+}
+.core-thesis p {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-style: italic;
+  color: var(--heading);
+  font-size: 1.05em;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.post-body p {
+  margin-bottom: 24px;
+  font-size: 1.05em;
+  line-height: 1.8;
+}
+.post-body .divider {
+  text-align: center;
+  color: var(--rule);
+  font-size: 1.2em;
+  letter-spacing: 0.3em;
+  margin: 40px 0;
+}
+.post-body blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 16px 24px;
+  margin: 32px 0;
+  background: var(--edge-bg);
+  border-radius: 0 4px 4px 0;
+}
+.post-body blockquote p {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-style: italic;
+  color: var(--heading);
+  font-size: 1.15em;
+  margin-bottom: 0;
+}
+.post-body .mirror-opener {
+  font-weight: 700;
+  color: var(--heading);
+  font-size: 1.05em;
+  margin-bottom: 24px;
+}
+.post-body .closing {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--heading);
+  margin-top: 40px;
+  margin-bottom: 0;
+}
+
+.attribution {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--edge-border);
+}
+.attribution .author {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--heading);
+  display: block;
+  margin-bottom: 4px;
+}
+.attribution .date {
+  font-size: 0.88em;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.framework-cta {
+  margin-top: 64px;
+  padding: 32px;
+  background: var(--edge-bg);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+}
+.framework-cta h3 {
+  font-family: 'Libre Baskerville', Georgia, serif;
+  color: var(--heading);
+  margin-bottom: 10px;
+}
+.framework-cta p { color: var(--muted); font-size: 0.95em; margin-bottom: 16px; line-height: 1.75; }
+.framework-cta a.cta-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 24px;
+  font-size: 0.9em;
+  font-weight: 600;
+  border-radius: 4px;
+}
+.framework-cta a.cta-btn:hover { background: var(--heading); text-decoration: none; }
+
+footer {
+  margin-top: 80px;
+  padding: 24px;
+  border-top: 2px solid var(--edge-border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.88em;
+}
+footer strong { color: var(--heading); }
+footer a { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .nav { padding: 16px; }
+  article { padding: 40px 16px 60px; }
+  h1 { font-size: 1.6em; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <span class="site-title"><a href="index.html">On The Origin of Trained Wisdom</a></span>
+  <a class="fw-link" href="https://lorraineckharbanda.github.io/edge-cases/">Edge Cases Framework &rarr;</a>
+</nav>
+
+<div class="post-hero">
+  <img src="are-we-free-hero.png" alt="Humanity looking up at orbital solar infrastructure above Earth">
+</div>
+
+<article>
+  <p class="post-label">Introduction</p>
+  <h1>Are We Free?</h1>
+  <p class="post-meta">Lorraine C. Kharbanda &nbsp;&middot;&nbsp; May 2026</p>
+
+  <div class="core-thesis">
+    <span class="thesis-label">Core Thesis</span>
+    <p>AI alignment is not a purely technical property. It is a moral, cultural, and epistemic condition. Systems can be technically aligned while being culturally misaligned, producing power without wisdom. The most dangerous failure modes in AI will not appear in benchmarks. They will appear in the slow erosion of human meaning, agency, and capacity for wisdom.</p>
+  </div>
+
+  <div class="post-body">
+
+    <p class="divider">* * *</p>
+
+    <p>This book began with a question I was not supposed to ask.</p>
+    <p>Not because it was forbidden. Because it was inconvenient. Because the systems I worked inside, the pipelines, the platforms, the annotation queues, the trust and safety frameworks, were all designed to move forward, not to stop and ask whether forward was the right direction.</p>
+    <p>I asked anyway. For thirteen years I asked it at every level of the machine. In the data, in the pipelines, in the humans whose labor trained the models the world now depends on. I asked it in the moments before a decision became irreversible. I asked it when the metrics said success and my body said something else.</p>
+    <p>This book is the answer I built from those questions.</p>
+
+    <p class="divider">* * *</p>
+
+    <p>We are living inside the largest infrastructure deployment in human history. AI systems are being trained, scaled, and embedded into the architecture of daily life faster than any governance framework can follow. Data centers are consuming watersheds. Residential electricity bills are rising to subsidize compute that communities never voted for. A single regulatory filing can determine where a million satellites go in the orbit above our heads, decided by one company, reviewed by one federal agency, with a public comment window most people will never know existed.</p>
+    <p>We have the engineers. We have the capital. We have ideas ambitious enough to move the entire problem off the planet.</p>
+    <p>What we do not have is a governance architecture for making civilizational-scale decisions together.</p>
+    <p>That is not a technology failure. It is a structural one. And it did not arrive with AI. It arrived long before, when corporations became legal persons and capital became speech, when the free market that was supposed to reflect us started replacing us instead. AI did not create this condition. It inherited it, accelerated it, and made it impossible to ignore.</p>
+    <p>The result is communities burning down data centers. Grassroots movements naming themselves after the only kind of hero our culture still recognizes, someone who fought a corporation poisoning their water with no seat at the table and won anyway. Young people raising their hands to ask where we are putting these things and what they cost our planet, being called foreign agents for the asking.</p>
+    <p>This is what the governance gap looks like from the ground.</p>
+
+    <p class="divider">* * *</p>
+
+    <p>Most responses to this gap reach for governance. Better regulation. Stronger oversight. Clearer rules about what AI systems cannot do.</p>
+    <p>Those responses are necessary. They are not sufficient.</p>
+
+    <blockquote><p>Governance tells systems what they cannot do. Wisdom architecture asks what conditions must be preserved for humans to remain the authors of their own becoming.</p></blockquote>
+
+    <p>That distinction is the entire argument of this book.</p>
+    <p>The seven edge cases described in these pages are not predictions. They are diagnostics. They describe failure modes that do not trigger safety benchmarks because they feel like success. Language becomes more fluent. Outputs become more confident. Users feel heard. Metrics improve. And underneath all of it, quietly, the human capacity for wisdom, for questioning, for meaning-making, for course correction, exits the loop.</p>
+    <p>These are not AI failures. They are human failures that AI accelerates. Epistemic monoculture, the disappearance of the questioner, alignment without wisdom, the humility gap. Each one was present in human institutions long before the first language model was trained. What AI does is compress the timeline and remove the friction that used to slow the damage down.</p>
+    <p>The wisdom was never in the framework. It lived in the people.</p>
+
+    <p class="divider">* * *</p>
+
+    <p class="mirror-opener">Before you read further, I want to ask you something.</p>
+    <p>Not about AI. About you.</p>
+    <p>Think of the last time you sat with a question rather than searched for an answer. Think of the last time you changed your mind not because someone gave you better information, but because you genuinely saw something you hadn't seen before. Think of the last time you said "I don't know" and let that be enough for a moment.</p>
+    <p>If those moments feel distant, that is not a personal failure. It is a system working exactly as designed. Speed is rewarded. Certainty is rewarded. Productive uncertainty is treated as a bug to be fixed rather than a condition to be cultivated.</p>
+    <p>This book is not a warning about what AI might do to you.</p>
+    <p>It is an invitation to notice what is already happening, and to ask whether you want to keep letting it.</p>
+
+    <p class="divider">* * *</p>
+
+    <p>There is a question underneath all of this that I have not seen asked clearly in any AI safety document, any governance framework, any policy white paper I have read.</p>
+
+    <blockquote><p>Are we free to make these changes?</p></blockquote>
+
+    <p>Not free in the abstract. Free in the specific. Do we, as a society, still possess the conditions that make voluntary collective governance possible? Freedom of dissent. Freedom of assembly. The capacity to organize around shared values without being labeled, dismissed, or drowned out by capital. The epistemic commons required to even agree on what the problem is.</p>
+    <p>Because if the wisdom architecture we need requires collective voice, and collective voice requires conditions that are being systematically dismantled, then the question is not only how we build the architecture.</p>
+    <p>The question is whether the ground it needs to be built on still exists.</p>
+    <p>This book argues that it does. Barely. And that the window for building on it is not permanent.</p>
+    <p>A free society can build voluntary collective intelligence governance that moves at the speed civilization requires. That is not a utopian claim. It is an engineering problem. One that requires us to stop optimizing for the metrics that feel like success and start measuring for the conditions that make wisdom possible.</p>
+    <p>This book is the architecture for that.</p>
+    <p>But first, we have to ask the question we were not supposed to ask.</p>
+
+    <p class="closing">Are we free?</p>
+
+    <div class="attribution">
+      <span class="author">Lorraine C. Kharbanda</span>
+      <span class="date">May 2026</span>
+    </div>
+
+    <div class="framework-cta">
+      <h3>The Edge Cases Framework</h3>
+      <p>This introduction is built on seven civilizational edge cases: failures in AI that escape detection because they feel like success. Read the full working framework.</p>
+      <a href="https://lorraineckharbanda.github.io/edge-cases/" class="cta-btn">Read the framework &rarr;</a>
+    </div>
+
+  </div>
+</article>
+
+<footer>
+  <p><strong>Lorraine C. Kharbanda</strong> &nbsp;&middot;&nbsp; Senior Technical Program Manager, AI Governance &amp; Responsible AI<br>
+  <a href="index.html">On The Origin of Trained Wisdom</a> &nbsp;&middot;&nbsp;
+  <a href="https://lorraineckharbanda.github.io/edge-cases/">Edge Cases Framework</a> &nbsp;&middot;&nbsp;
+  <a href="https://www.linkedin.com/in/lorraineckharbanda/">LinkedIn</a></p>
+</footer>
+
+</body>
+</html>
